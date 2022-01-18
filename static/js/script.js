@@ -18,4 +18,13 @@ $(function() {
 function addEditStock(settings) {
     let heading = settings.id == undefined ? "Add" : "Edit";
     $("#variableText").html(heading);
+    $("#submit").attr("onclick", `submitForm(${settings.id != undefined ? settings.id : ""})`);
+}
+
+function resetForm() {
+    $("#product_name, #sale_price, #cost_price, #expiery_date, #quantity").val("")
+}
+
+function submitForm(id) {
+    consoole.log("Hello");
 }

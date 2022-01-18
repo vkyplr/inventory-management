@@ -18,3 +18,21 @@ label {
 .form-control {
     font-size: large !important;
 }
+
+.row {
+    margin-bottom: 20px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .full-sm {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .pull-right {
+        float: right;
+    }
+}
+
