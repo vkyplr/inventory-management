@@ -26,7 +26,7 @@ function addEditStock(settings) {
     $("#submit").attr("onclick", `submitForm(event, ${settings.id != undefined ? settings.id : ""})`);
     $("#expiry_date").datepicker({ 
         minDate: -0,
-        dateFormat: "d-mm-y"
+        dateFormat: "d-mm-yy"
     });
 }
 
@@ -35,10 +35,11 @@ function resetForm() {
 }
 
 function submitForm(e, id = null) {
+    e.preventDefault();
     e.stopImmediatePropagation();
     let cost_price = parseInt($("#cost_price").val());
     let sale_price = parseInt($("#sale_price").val());
-    if (cost_price >= sale_price) {
+    if (cost_price > sale_price) {
         Swal.fire(
             "Error", 
             "Sale Price cannot be less than Cost Price", 
@@ -50,7 +51,6 @@ function submitForm(e, id = null) {
     let product_name = $("#product_name").val();
     let expiry_date = $("#expiry_date").val();
     let targetUrl = `${BASE_URL}/stock/${id != null ? id : ""}`;
-    console.log(targetUrl)
     $.ajax({
         url: targetUrl,
         data: JSON.stringify({
@@ -59,8 +59,14 @@ function submitForm(e, id = null) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         type: "POST",
-        success: function(e) {
-
+        complete: function(xhr, e) {
+            if (xhr.status) {
+                Swal.fire(
+                    "Success",
+                    "Stock Added Successfully",
+                    "success"
+                )
+            }
         }
     })
 }
