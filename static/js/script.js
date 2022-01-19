@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:8000";
 const pages =  {
     add_stock: { file: "stock_form.html", data: (settings = {}) =>  { addEditStock(settings) }},
     home: { file: "home.html", data: (settings = {}) => {  } },
-    list_stock: { file: "list_stock.html", data: (settings = {}) => {} }
+    list_stock: { file: "list_stock.html", data: (settings = {}) => { stockList(); } }
 }
 
 function changeTab(page) {
@@ -71,3 +71,13 @@ function submitForm(e, id = null) {
     })
 }
 
+function stockList() {
+    let targetUrl = `${BASE_URL}/stock`;
+    $.ajax({
+        url: targetUrl,
+        type: "GET",
+        success: function(ata) {
+            
+        }
+    })
+}

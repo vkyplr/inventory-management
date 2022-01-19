@@ -11,6 +11,9 @@ module.exports = {
         }
     },
 
-    // listStock: async
+    listStock: async (req, res) => {
+        let result = await stock.getAll();
+        // console.log(result)
+    }
 
 };

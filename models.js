@@ -26,6 +26,7 @@ db.run(sql_create_stock, err => {
 });
 
 const stock = {
+
     add: async (data) => {
         db.run(`INSERT INTO stock (
             product_name, 
@@ -50,10 +51,11 @@ const stock = {
     },
 
     getAll: async () => {
-        let result = db.all("SELECT * FROM stock", (err, rows) => {
-            console.log(rows)
-        })
-    }
+        db.all("SELECT * FROM stock", (e, rows) => {
+            return rows;
+        });
+        // console.log(this.r);
+    },
 }
 
 module.exports = {
