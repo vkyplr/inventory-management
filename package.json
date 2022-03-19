@@ -1,5 +1,5 @@
 {
-  "name": "ims",
+  "name": "inventory",
   "version": "1.0.0",
   "description": "Inventory Management System",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "electron": "^16.0.7",
+    "electron-custom-titlebar": "^4.0.2",
     "express": "^4.17.2",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2"
